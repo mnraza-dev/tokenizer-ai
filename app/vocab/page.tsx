@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
+import { ThemeToggle } from "@/components/theme-toggle"
 import { tokenizer } from "@/lib/tokenizer"
 import Link from "next/link"
 import { ArrowLeft, Search, BookOpen, Download, Trash2, TrendingUp } from "lucide-react"
@@ -74,45 +75,52 @@ export default function VocabularyPage() {
 
   if (!isLoaded) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
         <div className="text-center">
           <div className="relative">
-            <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-200 border-t-blue-600 mx-auto mb-4"></div>
-            <div className="animate-ping absolute top-0 left-1/2 transform -translate-x-1/2 rounded-full h-12 w-12 border-4 border-blue-400 opacity-20"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-4 border-emerald-200 border-t-emerald-600 dark:border-slate-600 dark:border-t-emerald-400 mx-auto mb-4"></div>
+            <div className="animate-ping absolute top-0 left-1/2 transform -translate-x-1/2 rounded-full h-12 w-12 border-4 border-emerald-400 dark:border-emerald-500 opacity-20"></div>
           </div>
-          <p className="text-gray-600 animate-pulse">Loading vocabulary...</p>
+          <p className="text-slate-600 dark:text-slate-300 animate-pulse">Loading vocabulary...</p>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 transition-colors duration-500">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="flex items-center justify-between mb-8 animate-in fade-in duration-700">
+          <div className="flex items-center justify-between mb-8 animate-in fade-in duration-700 relative">
             <div>
               <div className="flex items-center gap-4 mb-2">
                 <Link href="/">
-                  <Button variant="outline" size="sm" className="hover:scale-105 transition-transform bg-transparent">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="hover:scale-105 transition-transform bg-white/50 dark:bg-slate-700/50 border-emerald-200 dark:border-slate-600 hover:border-emerald-300 dark:hover:border-slate-500 text-slate-700 dark:text-slate-200"
+                  >
                     <ArrowLeft className="h-4 w-4 mr-2" />
                     Back to Demo
                   </Button>
                 </Link>
-                <h1 className="text-3xl font-bold text-gray-900 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                <h1 className="text-3xl font-bold text-slate-900 dark:text-slate-100 bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 dark:from-emerald-400 dark:via-teal-400 dark:to-cyan-400 bg-clip-text text-transparent">
                   Vocabulary Viewer
                 </h1>
               </div>
-              <p className="text-gray-600">Explore all {vocabulary.length} tokens learned by the tokenizer</p>
+              <p className="text-slate-600 dark:text-slate-300">
+                Explore all {vocabulary.length} tokens learned by the tokenizer
+              </p>
             </div>
-            <div className="flex gap-2">
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
               <Button
                 variant="outline"
                 size="sm"
                 onClick={handleExportVocabulary}
                 disabled={vocabulary.length === 0}
-                className="hover:scale-105 transition-transform bg-transparent"
+                className="hover:scale-105 transition-transform bg-white/50 dark:bg-slate-700/50 border-emerald-200 dark:border-slate-600 hover:border-emerald-300 dark:hover:border-slate-500 text-slate-700 dark:text-slate-200"
               >
                 <Download className="h-4 w-4 mr-2" />
                 Export
@@ -121,7 +129,7 @@ export default function VocabularyPage() {
                 variant="outline"
                 size="sm"
                 onClick={handleReloadVocabulary}
-                className="hover:scale-105 transition-transform bg-transparent"
+                className="hover:scale-105 transition-transform bg-white/50 dark:bg-slate-700/50 border-emerald-200 dark:border-slate-600 hover:border-emerald-300 dark:hover:border-slate-500 text-slate-700 dark:text-slate-200"
               >
                 <BookOpen className="h-4 w-4 mr-2" />
                 Reload Corpus
@@ -131,7 +139,7 @@ export default function VocabularyPage() {
                 size="sm"
                 onClick={handleClearVocabulary}
                 disabled={vocabulary.length === 0}
-                className="hover:scale-105 transition-transform bg-transparent"
+                className="hover:scale-105 transition-transform bg-white/50 dark:bg-slate-700/50 border-emerald-200 dark:border-slate-600 hover:border-emerald-300 dark:hover:border-slate-500 text-slate-700 dark:text-slate-200"
               >
                 <Trash2 className="h-4 w-4 mr-2" />
                 Clear All
@@ -140,15 +148,17 @@ export default function VocabularyPage() {
           </div>
 
           {vocabulary.length === 0 ? (
-            <Card className="animate-in fade-in slide-in-from-bottom duration-500">
+            <Card className="animate-in fade-in slide-in-from-bottom duration-500 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-emerald-200 dark:border-slate-600 shadow-lg hover:shadow-xl transition-all duration-300">
               <CardContent className="text-center py-12">
-                <BookOpen className="h-12 w-12 text-gray-400 mx-auto mb-4 animate-pulse" />
-                <h3 className="text-lg font-medium text-gray-900 mb-2">No Vocabulary Found</h3>
-                <p className="text-gray-600 mb-4">
+                <BookOpen className="h-12 w-12 text-slate-400 dark:text-slate-500 mx-auto mb-4 animate-pulse" />
+                <h3 className="text-lg font-medium text-slate-900 dark:text-slate-100 mb-2">No Vocabulary Found</h3>
+                <p className="text-slate-600 dark:text-slate-300 mb-4">
                   The tokenizer hasn't learned any vocabulary yet. Go back to the demo and load the corpus!
                 </p>
                 <Link href="/">
-                  <Button className="hover:scale-105 transition-transform">Go to Demo</Button>
+                  <Button className="hover:scale-105 transition-transform bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600">
+                    Go to Demo
+                  </Button>
                 </Link>
               </CardContent>
             </Card>
@@ -156,43 +166,43 @@ export default function VocabularyPage() {
             <div className="space-y-6">
               {/* Statistics and Search */}
               <div className="grid md:grid-cols-3 gap-4">
-                <Card className="animate-in slide-in-from-left duration-500">
+                <Card className="animate-in slide-in-from-left duration-500 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-emerald-200 dark:border-slate-600 shadow-lg hover:shadow-xl transition-all duration-300">
                   <CardHeader className="pb-3">
-                    <CardTitle className="text-lg flex items-center gap-2">
-                      <TrendingUp className="h-4 w-4 text-blue-600" />
+                    <CardTitle className="text-lg flex items-center gap-2 text-slate-900 dark:text-slate-100">
+                      <TrendingUp className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                       Total Tokens
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold text-blue-600 animate-in fade-in duration-700 delay-300">
+                    <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400 animate-in fade-in duration-700 delay-300">
                       {vocabulary.length}
                     </div>
                   </CardContent>
                 </Card>
 
-                <Card className="animate-in slide-in-from-bottom duration-500 delay-100">
+                <Card className="animate-in slide-in-from-bottom duration-500 delay-100 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-emerald-200 dark:border-slate-600 shadow-lg hover:shadow-xl transition-all duration-300">
                   <CardHeader className="pb-3">
-                    <CardTitle className="text-lg">Filtered Results</CardTitle>
+                    <CardTitle className="text-lg text-slate-900 dark:text-slate-100">Filtered Results</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold text-green-600 animate-in fade-in duration-700 delay-400">
+                    <div className="text-2xl font-bold text-teal-600 dark:text-teal-400 animate-in fade-in duration-700 delay-400">
                       {filteredVocabulary.length}
                     </div>
                   </CardContent>
                 </Card>
 
-                <Card className="animate-in slide-in-from-right duration-500 delay-200">
+                <Card className="animate-in slide-in-from-right duration-500 delay-200 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-emerald-200 dark:border-slate-600 shadow-lg hover:shadow-xl transition-all duration-300">
                   <CardHeader className="pb-3">
-                    <CardTitle className="text-lg">Search Tokens</CardTitle>
+                    <CardTitle className="text-lg text-slate-900 dark:text-slate-100">Search Tokens</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="relative">
-                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400 dark:text-slate-500" />
                       <Input
                         placeholder="Search vocabulary..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="pl-10 transition-all duration-200 focus:ring-2 focus:ring-blue-500"
+                        className="pl-10 transition-all duration-200 focus:ring-2 focus:ring-emerald-500 dark:focus:ring-emerald-400 bg-white dark:bg-slate-700 border-slate-300 dark:border-slate-600 text-slate-900 dark:text-slate-100"
                       />
                     </div>
                   </CardContent>
@@ -200,10 +210,10 @@ export default function VocabularyPage() {
               </div>
 
               {/* Vocabulary Grid */}
-              <Card className="animate-in slide-in-from-bottom duration-500 delay-300">
+              <Card className="animate-in slide-in-from-bottom duration-500 delay-300 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-emerald-200 dark:border-slate-600 shadow-lg hover:shadow-xl transition-all duration-300">
                 <CardHeader>
-                  <CardTitle>Vocabulary Tokens</CardTitle>
-                  <CardDescription>
+                  <CardTitle className="text-slate-900 dark:text-slate-100">Vocabulary Tokens</CardTitle>
+                  <CardDescription className="text-slate-600 dark:text-slate-300">
                     {filteredVocabulary.length > 0
                       ? `Showing ${filteredVocabulary.length} of ${vocabulary.length} tokens`
                       : "No tokens match your search"}
@@ -215,7 +225,7 @@ export default function VocabularyPage() {
                       {filteredVocabulary.map((item, index) => (
                         <div
                           key={item.id}
-                          className={`flex items-center justify-between p-3 rounded-lg border transition-all duration-300 hover:shadow-lg hover:scale-[1.02] ${tokenizer.getTokenColor(item.id)} ${
+                          className={`flex items-center justify-between p-3 rounded-lg border transition-all duration-300 hover:shadow-lg hover:scale-[1.02] bg-white/50 dark:bg-slate-700/50 border-emerald-200 dark:border-slate-600 hover:border-emerald-300 dark:hover:border-slate-500 ${
                             showVocab
                               ? "animate-in fade-in slide-in-from-left duration-300"
                               : "opacity-0 -translate-x-4"
@@ -228,24 +238,24 @@ export default function VocabularyPage() {
                           <div className="flex items-center gap-3">
                             <Badge
                               variant="secondary"
-                              className="font-mono text-xs hover:scale-110 transition-transform"
+                              className="font-mono text-xs hover:scale-110 transition-transform bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 border-emerald-300 dark:border-emerald-700"
                             >
                               ID: {item.id}
                             </Badge>
-                            <span className="font-medium">{item.token}</span>
+                            <span className="font-medium text-slate-900 dark:text-slate-100">{item.token}</span>
                           </div>
-                          <div className="text-xs text-gray-500">#{index + 1}</div>
+                          <div className="text-xs text-slate-500 dark:text-slate-400">#{index + 1}</div>
                         </div>
                       ))}
                     </div>
                   ) : (
                     <div className="text-center py-8 animate-in fade-in duration-500">
-                      <Search className="h-8 w-8 text-gray-400 mx-auto mb-2 animate-pulse" />
-                      <p className="text-gray-600">No tokens found matching "{searchTerm}"</p>
+                      <Search className="h-8 w-8 text-slate-400 dark:text-slate-500 mx-auto mb-2 animate-pulse" />
+                      <p className="text-slate-600 dark:text-slate-300">No tokens found matching "{searchTerm}"</p>
                       <Button
                         variant="outline"
                         size="sm"
-                        className="mt-2 bg-transparent hover:scale-105 transition-transform"
+                        className="mt-2 bg-white/50 dark:bg-slate-700/50 hover:scale-105 transition-transform border-emerald-200 dark:border-slate-600 hover:border-emerald-300 dark:hover:border-slate-500 text-slate-700 dark:text-slate-200"
                         onClick={() => setSearchTerm("")}
                       >
                         Clear Search
@@ -256,42 +266,42 @@ export default function VocabularyPage() {
               </Card>
 
               {/* Token Distribution Info */}
-              <Card className="animate-in slide-in-from-bottom duration-500 delay-500">
+              <Card className="animate-in slide-in-from-bottom duration-500 delay-500 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-emerald-200 dark:border-slate-600 shadow-lg hover:shadow-xl transition-all duration-300">
                 <CardHeader>
-                  <CardTitle>Token Statistics</CardTitle>
+                  <CardTitle className="text-slate-900 dark:text-slate-100">Token Statistics</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="grid md:grid-cols-2 gap-4 text-sm">
                     <div className="animate-in fade-in duration-700 delay-700">
-                      <h4 className="font-medium mb-2">Token Types</h4>
-                      <ul className="space-y-1 text-gray-600">
-                        <li className="hover:text-gray-800 transition-colors">
+                      <h4 className="font-medium mb-2 text-slate-800 dark:text-slate-200">Token Types</h4>
+                      <ul className="space-y-1 text-slate-600 dark:text-slate-400">
+                        <li className="hover:text-slate-800 dark:hover:text-slate-200 transition-colors">
                           • Words: {vocabulary.filter((v) => /^[a-zA-Z]+$/.test(v.token)).length}
                         </li>
-                        <li className="hover:text-gray-800 transition-colors">
+                        <li className="hover:text-slate-800 dark:hover:text-slate-200 transition-colors">
                           • Punctuation: {vocabulary.filter((v) => /^[^\w\s]+$/.test(v.token)).length}
                         </li>
-                        <li className="hover:text-gray-800 transition-colors">
+                        <li className="hover:text-slate-800 dark:hover:text-slate-200 transition-colors">
                           • Numbers: {vocabulary.filter((v) => /^\d+$/.test(v.token)).length}
                         </li>
-                        <li className="hover:text-gray-800 transition-colors">
+                        <li className="hover:text-slate-800 dark:hover:text-slate-200 transition-colors">
                           • Mixed: {vocabulary.filter((v) => /\w/.test(v.token) && /\d/.test(v.token)).length}
                         </li>
                       </ul>
                     </div>
                     <div className="animate-in fade-in duration-700 delay-900">
-                      <h4 className="font-medium mb-2">Token Lengths</h4>
-                      <ul className="space-y-1 text-gray-600">
-                        <li className="hover:text-gray-800 transition-colors">
+                      <h4 className="font-medium mb-2 text-slate-800 dark:text-slate-200">Token Lengths</h4>
+                      <ul className="space-y-1 text-slate-600 dark:text-slate-400">
+                        <li className="hover:text-slate-800 dark:hover:text-slate-200 transition-colors">
                           • 1 char: {vocabulary.filter((v) => v.token.length === 1).length}
                         </li>
-                        <li className="hover:text-gray-800 transition-colors">
+                        <li className="hover:text-slate-800 dark:hover:text-slate-200 transition-colors">
                           • 2-4 chars: {vocabulary.filter((v) => v.token.length >= 2 && v.token.length <= 4).length}
                         </li>
-                        <li className="hover:text-gray-800 transition-colors">
+                        <li className="hover:text-slate-800 dark:hover:text-slate-200 transition-colors">
                           • 5-8 chars: {vocabulary.filter((v) => v.token.length >= 5 && v.token.length <= 8).length}
                         </li>
-                        <li className="hover:text-gray-800 transition-colors">
+                        <li className="hover:text-slate-800 dark:hover:text-slate-200 transition-colors">
                           • 9+ chars: {vocabulary.filter((v) => v.token.length >= 9).length}
                         </li>
                       </ul>
