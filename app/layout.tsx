@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
 
 export const metadata: Metadata = {
-  title: 'Custom Tokenizer',
+  title: 'Tokenizer AI',
   description: 'An interactive tokenizer playground built with Next.js',
 }
 
@@ -16,15 +16,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body className={inter.className}>
-        <ThemeProvider defaultTheme="light" storageKey="tokenizer-theme">
-         <main>
-           {children}
-         </main>
-        </ThemeProvider>
-      </body>
+   <html lang="en" className={inter.variable}>
+  <body>
+    <ThemeProvider defaultTheme="light" storageKey="tokenizer-theme">
+      <main>{children}</main>
+    </ThemeProvider>
+  </body>
+</html>
 
-    </html>
   )
 }
