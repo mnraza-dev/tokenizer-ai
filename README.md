@@ -87,3 +87,5 @@ custom-tokenizer/
 ![Encode Screenshot](https://raw.githubusercontent.com/mnraza-dev/tokenizer-ai/main/public/screenshots/encode.jpg)
 ![Decode Screenshot](https://raw.githubusercontent.com/mnraza-dev/tokenizer-ai/main/public/screenshots/decode.jpg)
 
+![Decode Screenshot](https://raw.githubusercontent.com/mnraza-dev/tokenizer-ai/main/public/screenshots/vocab.jpg)
+
