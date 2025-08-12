@@ -4,7 +4,12 @@ An **interactive tokenizer playground** built with **Next.js**, **TypeScript**, 
 Perfect for learning how tokenizers work under the hood and testing your own text data.
 
 ![Home Screenshot](https://raw.githubusercontent.com/mnraza-dev/tokenizer-ai/main/public/screenshots/home.jpg)
+---
+## 📺 Live Demo
 
+Check out the live app here: [https://tokenizer-ai.vercel.app/](https://tokenizer-ai.vercel.app/)
+
+---
 
 ## 🚀 Features
 
@@ -87,5 +92,5 @@ custom-tokenizer/
 ![Encode Screenshot](https://raw.githubusercontent.com/mnraza-dev/tokenizer-ai/main/public/screenshots/encode.jpg)
 ![Decode Screenshot](https://raw.githubusercontent.com/mnraza-dev/tokenizer-ai/main/public/screenshots/decode.jpg)
 
-![Decode Screenshot](https://raw.githubusercontent.com/mnraza-dev/tokenizer-ai/main/public/screenshots/vocab.jpg)
+![Vocab Screenshot](https://raw.githubusercontent.com/mnraza-dev/tokenizer-ai/main/public/screenshots/vocab.jpg)
 
