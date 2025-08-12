@@ -1,0 +1,15 @@
+The quick brown fox jumps over the lazy dog. This is a simple sentence for testing our tokenizer.
+
+Machine learning is a fascinating field that involves training algorithms to recognize patterns in data. Natural language processing, or NLP, is a subset of machine learning that focuses on understanding and generating human language.
+
+Tokenization is the process of breaking down text into smaller units called tokens. These tokens can be words, subwords, or even individual characters. The choice of tokenization strategy depends on the specific application and the characteristics of the language being processed.
+
+In this demo, we are using a simple word-level tokenizer that splits text on whitespace and punctuation. More advanced tokenizers like Byte Pair Encoding (BPE) or SentencePiece can handle subword tokenization, which is useful for handling out-of-vocabulary words and morphologically rich languages.
+
+The vocabulary of a tokenizer consists of all the unique tokens it has learned from the training corpus. Each token is assigned a unique identifier, typically a number, which allows the model to process text numerically.
+
+Hello world! How are you today? I hope you are doing well. This is another sentence to expand our vocabulary with common words and phrases.
+
+Artificial intelligence and deep learning have revolutionized many fields, including computer vision, speech recognition, and natural language understanding. Large language models like GPT and BERT have shown remarkable capabilities in various NLP tasks.
+
+Thank you for trying out this tokenizer demo. Feel free to experiment with different texts and see how the tokenization process works!
