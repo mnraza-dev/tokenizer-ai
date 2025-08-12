@@ -3,9 +3,8 @@
 An **interactive tokenizer playground** built with **Next.js**, **TypeScript**, and a sleek UI for experimenting with **text tokenization** (encoding & decoding).  
 Perfect for learning how tokenizers work under the hood and testing your own text data.
 
-![Tokenizer AI Screenshot](./screenshots/hero.png)
+![Home Screenshot](https://raw.githubusercontent.com/mnraza-dev/tokenizer-ai/main/public/screenshots/home.jpg)
 
----
 
 ## 🚀 Features
 
@@ -83,6 +82,8 @@ custom-tokenizer/
 ```
 ## 📷 Screenshots
 
-![Home Screenshot](/screenshots/home.jpg)
-![Encode Screenshot](/screenshots/encode.jpg)
-![Decode Screenshot](/screenshots/decode.jpg)
+![Home Screenshot](https://raw.githubusercontent.com/mnraza-dev/tokenizer-ai/main/public/screenshots/home.jpg)
+
+![Encode Screenshot](https://raw.githubusercontent.com/mnraza-dev/tokenizer-ai/main/public/screenshots/encode.jpg)
+![Decode Screenshot](https://raw.githubusercontent.com/mnraza-dev/tokenizer-ai/main/public/screenshots/decode.jpg)
+
