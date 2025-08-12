@@ -75,10 +75,10 @@ export default function VocabularyPage() {
 
   if (!isLoaded) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50  dark:from-black dark:via-black dark:to-black">
         <div className="text-center">
           <div className="relative">
-            <div className="animate-spin rounded-full h-12 w-12 border-4 border-emerald-200 border-t-emerald-600 dark:border-slate-600 dark:border-t-emerald-400 mx-auto mb-4"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-4 border-emerald-200 border-t-emerald-600 dark:border-slate-900 dark:border-t-emerald-400 mx-auto mb-4"></div>
             <div className="animate-ping absolute top-0 left-1/2 transform -translate-x-1/2 rounded-full h-12 w-12 border-4 border-emerald-400 dark:border-emerald-500 opacity-20"></div>
           </div>
           <p className="text-slate-600 dark:text-slate-300 animate-pulse">Loading vocabulary...</p>
@@ -88,7 +88,7 @@ export default function VocabularyPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 transition-colors duration-500">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50   dark:from-black dark:via-black dark:to-black transition-colors duration-500">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
@@ -102,16 +102,12 @@ export default function VocabularyPage() {
                     className="hover:scale-105 transition-transform bg-white/50 dark:bg-slate-700/50 border-emerald-200 dark:border-slate-600 hover:border-emerald-300 dark:hover:border-slate-500 text-slate-700 dark:text-slate-200"
                   >
                     <ArrowLeft className="h-4 w-4 mr-2" />
-                    Back to Demo
+                    Back
                   </Button>
                 </Link>
-                <h1 className="text-3xl font-bold text-slate-900 dark:text-slate-100 bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 dark:from-emerald-400 dark:via-teal-400 dark:to-cyan-400 bg-clip-text text-transparent">
-                  Vocabulary Viewer
-                </h1>
+               
               </div>
-              <p className="text-slate-600 dark:text-slate-300">
-                Explore all {vocabulary.length} tokens learned by the tokenizer
-              </p>
+            
             </div>
             <div className="flex items-center gap-2">
               <ThemeToggle />
@@ -146,9 +142,17 @@ export default function VocabularyPage() {
               </Button>
             </div>
           </div>
+          <div className="mb-6 animate-in fade-in duration-700">
+               <h1 className="text-3xl font-bold text-slate-900 dark:text-slate-100 bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 dark:from-emerald-400 dark:via-teal-400 dark:to-cyan-400 bg-clip-text text-transparent">
+                  Vocabulary Viewer
+                </h1>
+              <p className="text-slate-600 dark:text-slate-300">
+                Explore all {vocabulary.length} tokens learned by the tokenizer
+              </p>
+          </div>
 
           {vocabulary.length === 0 ? (
-            <Card className="animate-in fade-in slide-in-from-bottom duration-500 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-emerald-200 dark:border-slate-600 shadow-lg hover:shadow-xl transition-all duration-300">
+            <Card className="animate-in fade-in slide-in-from-bottom duration-500 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm border-emerald-200 dark:border-slate-900 shadow-lg hover:shadow-xl transition-all duration-300">
               <CardContent className="text-center py-12">
                 <BookOpen className="h-12 w-12 text-slate-400 dark:text-slate-500 mx-auto mb-4 animate-pulse" />
                 <h3 className="text-lg font-medium text-slate-900 dark:text-slate-100 mb-2">No Vocabulary Found</h3>
@@ -225,11 +229,10 @@ export default function VocabularyPage() {
                       {filteredVocabulary.map((item, index) => (
                         <div
                           key={item.id}
-                          className={`flex items-center justify-between p-3 rounded-lg border transition-all duration-300 hover:shadow-lg hover:scale-[1.02] bg-white/50 dark:bg-slate-700/50 border-emerald-200 dark:border-slate-600 hover:border-emerald-300 dark:hover:border-slate-500 ${
-                            showVocab
+                          className={`flex items-center justify-between p-3 rounded-lg border transition-all duration-300 hover:shadow-lg hover:scale-[1.02] bg-white/50 dark:bg-slate-700/50 border-emerald-200 dark:border-slate-600 hover:border-emerald-300 dark:hover:border-slate-500 ${showVocab
                               ? "animate-in fade-in slide-in-from-left duration-300"
                               : "opacity-0 -translate-x-4"
-                          }`}
+                            }`}
                           style={{
                             animationDelay: showVocab ? `${index * 20}ms` : "0ms",
                             animationFillMode: "both",

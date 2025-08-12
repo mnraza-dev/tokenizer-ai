@@ -125,7 +125,7 @@ export default function Home() {
       <Navigation />
       <HeroSection />
 
-      <div id="demo-section" className="min-h-screen bg-background transition-colors duration-500">
+      <div id="demo-section" className="min-h-screen  bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50   dark:from-black dark:via-black dark:to-black transition-colors duration-500">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12 animate-in fade-in duration-700">
