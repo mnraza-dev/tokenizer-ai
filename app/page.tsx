@@ -1,5 +1,4 @@
 "use client"
-
 import { useState, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -28,15 +27,12 @@ export default function Home() {
   const [showTokens, setShowTokens] = useState(false)
 
   useEffect(() => {
-    // Load demo corpus on first visit
     const loadCorpus = async () => {
       try {
         const response = await fetch("/demo_corpus.txt")
         const corpus = await response.text()
         tokenizer.learnFromCorpus(corpus)
         setVocabularySize(tokenizer.getVocabularySize())
-
-        // Encode initial text
         const result = tokenizer.encode(inputText)
         setEncodedResult(result)
         setIsLoaded(true)
@@ -136,7 +132,7 @@ export default function Home() {
             </div>
 
             <div className="grid lg:grid-cols-3 gap-8">
-              {/* Main Demo Area */}
+              {/* Main Area */}
               <div className="lg:col-span-2 space-y-6">
                 <Card className="animate-in slide-in-from-left duration-500 bg-card/80 backdrop-blur-sm border-border shadow-lg hover:shadow-xl transition-all duration-300">
                   <CardHeader>
